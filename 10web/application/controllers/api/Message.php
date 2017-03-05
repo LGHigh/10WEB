@@ -1,6 +1,6 @@
-<?php 
+<?php
 class Message extends CI_Controller{
-	
+
 	public function __construct(){
 		parent::__construct();
         $this->load->model('usermessage_model');
@@ -150,6 +150,7 @@ class Message extends CI_Controller{
         echo json_encode($info);
     }
 
+
     //管理员部分
     /**
     *   查看所有用户的消息
@@ -173,6 +174,19 @@ class Message extends CI_Controller{
         }
         echo urldecode(json_encode($info));
     }
+
+		/**
+		*	获取未读的系统消息
+		*/
+
+		/**
+		*	查看系统消息
+		*/
+		public function GetSysMessages(){
+			$messages = $this->usermessage_model->GetSysMessages();
+			$info = $this->getInfo(101,$messages);
+			echo json_encode($info);
+		}
 }
 
  ?>
