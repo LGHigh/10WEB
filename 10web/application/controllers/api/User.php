@@ -71,7 +71,7 @@ class User extends CI_Controller {
         if(!sendMail($account,$email_info,$this->config->item('base_url'))){
           $info = $this->getInfo(-3,"signup fail","");
         }
-        
+
         echo urldecode(json_encode($info));
     }
 
@@ -153,7 +153,7 @@ class User extends CI_Controller {
       }catch(Exception $e){
         echo $this->getInfo('-1',$e);
       }
-    }  
+    }
 
     /**
      * 根据传来的UserID返回用户的NickName,Account,HeadIcon,Profile
@@ -171,5 +171,5 @@ class User extends CI_Controller {
       echo json_encode($info);
     }
 }
-    
+
 ?>
