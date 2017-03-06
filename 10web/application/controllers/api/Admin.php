@@ -10,7 +10,6 @@ class Admin extends CI_Controller {
     {
        echo "api/admin";
     }
-
     /**
      * use to make a info
      *
