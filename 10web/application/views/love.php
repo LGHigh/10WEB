@@ -53,18 +53,26 @@
 				</a>
 			</div>
 		</div>
+		<li class="row" style="background-color:#F4F5F9;margin-top:20px;margin-left:15px;border-top:1px solid #E7E7EB;">
+			<span class="content">系统公告</span>
+			<span style="width:90px;height:50px;margin-left:800px;font-size:15px;color:white;background-color:#44B549;"><a href="#" style="color:white;">新公告</a></span>
+		</li>
 		<div class="contents">
-			<ul>
-				<li class="row" id="sysmessages">
-					<span class="content">系统公告</span>
-					<span style="width:90px;height:50px;margin-left:800px;font-size:15px;color:white;background-color:#44B549;"><a href="#" style="color:white;">新公告</a></span>
-				</li>
-			</ul>
+			<ul id="sysmessages"></ul>
+			<div class="jump">
+				<button onclick="pre_page()">上一页</button>
+				第<span id="index"></span>/<span id="total_page"></span>页
+				<button onclick="next_page()">下一页</button>	&nbsp; &nbsp; &nbsp;
+				第<input type="text" id="jump_to" style="width:40px;">页 <button onclick="jumpTo()">跳转</button>
+			</div>
+			
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript">
+	contents = null;
+	index = 0;
   //获取未读消息数
   $.get('/index.php/api/admin/get_number_of_unread',function(data){
     data = JSON.parse(data);
@@ -103,24 +111,56 @@
     data = JSON.parse(data);
     if(data.Flag > 0){
       contents = data.Content;
-      for(var i = 0;i < contents.length;++i){
-        var li = document.createElement('li');
-        li.setAttribute('class','row');
-        var span = document.createElement('span');
-        span.setAttribute('class','content');
-        span.innerText = contents[i].Content;
-        var spanT = document.createElement('span');
-        spanT.innerText = contents[i].SendTime.slice(0,10);
-        li.appendChild(span);
-        li.appendChild(spanT);
-        document.getElementById('sysmessages').appendChild(li);
-      }
+      index = 0;
+      paging(contents,index);
       return;
     }
     else{
       console.error("从服务器获取数据失败");
     }
   });
+//分页函数
+function paging(contents,index){
+	//先清除所有孩子
+	var parent = document.getElementById('sysmessages');
+	while(parent.hasChildNodes()){
+		parent.removeChild(parent.firstChild);
+	}
+	document.getElementById('index').innerText = index+1;
+	document.getElementById('total_page').innerText = contents.length;
+	contents = contents[index];
+	for(var i = 0;i < contents.length;++i){
+		var li = document.createElement('li');
+        li.setAttribute('class','row');
+        var span = document.createElement('span');
+        span.setAttribute('class','content');
+        span.innerText = contents[i].Content;
+        var spanT = document.createElement('span');
+        spanT.setAttribute('class','time');
+        spanT.innerText = contents[i].SendTime.slice(0,10);
+        li.appendChild(span);
+        li.appendChild(spanT);
+        parent.appendChild(li);
+	}
+}
+//跳转函数
+function jumpTo(){
+	index = document.getElementById('jump_to').value;
+	if(index >= total_page)index = total_page;
+	index = index -1;
+	paging(contents,index);
+}
+//下上页跳转
+function pre_page(){
+	if(index == 0)return;
+	index = index - 1;
+	paging(contents,index);
+}
+function next_page(){
+	if(index == contents.length - 1)return;
+	index = index + 1;
+	paging(contents,index);
+}
 
 </script>
 
