@@ -3,7 +3,7 @@
    require('./application/views/template/html_begin.php');
 ?>
 
-<link rel="stylesheet" href="/assets/css/love.css">
+<link rel="stylesheet" href="/assets/css/admin.css">
 
 <body>
 
@@ -55,7 +55,7 @@
     </div>
     <li class="row" style="background-color:#F4F5F9;margin-top:20px;margin-left:15px;border-top:1px solid #E7E7EB;">
       <span class="content">系统公告</span>
-      <span style="width:90px;height:50px;margin-left:800px;font-size:15px;color:white;background-color:#44B549;"><a href="#" style="color:white;">新公告</a></span>
+      <span><button class="am-btn am-btn-success" style="float:right;margin-right:20px;">新公告</button></span>
     </li>
     <div class="contents">
       <ul id="sysmessages"></ul>
