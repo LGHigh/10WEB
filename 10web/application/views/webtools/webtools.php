@@ -7,7 +7,7 @@
 ?>
 
 <!-- want css here-->
-<link href="/assets/css/amazeui.css" rel="stylesheet" type="text/css" media="all">
+<link href="/assets/css/amazeui.min.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="/assets/css/webtools.css" type="text/css" media="all"> 
 <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	  
