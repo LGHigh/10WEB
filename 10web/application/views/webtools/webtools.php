@@ -41,8 +41,8 @@
 		for(var i=0 ; i < _data.length ; i++)
 		{
 			_html+='<a href="webtools/tools/';
-			_html+=i;
-			_html+='"><div class="col-sm-3 wthree-services">';
+			_html+=i;	// xs   small  md mid
+			_html+='"><div class="col-sm-4 col-md-3 col-xs-6 wthree-services">';
 				_html+='<div class="wthree-services-grid">';
 						_html+='<div class="wthree-services-info">';
 							_html+='<i class="am-icon-';
