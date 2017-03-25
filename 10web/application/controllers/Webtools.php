@@ -9,6 +9,9 @@ class Webtools extends CI_Controller {
 
     public function tools($id)
     {	
+    	$this->load->helper('url');
+    	if(!isset($id))
+    		redirect('webtools');
     	$data = array('id' => $id);
         $this->load->view('webtools/tools',$data);
     }
