@@ -1,6 +1,6 @@
-<?php 
+<?php
 class Message extends CI_Controller{
-	
+
 	public function __construct(){
 		parent::__construct();
         $this->load->model('usermessage_model');
@@ -150,6 +150,7 @@ class Message extends CI_Controller{
         echo json_encode($info);
     }
 
+
     //管理员部分
     /**
     *   查看所有用户的消息
@@ -173,6 +174,34 @@ class Message extends CI_Controller{
         }
         echo urldecode(json_encode($info));
     }
+
+		/**
+		*	获取未读的系统消息
+		*/
+
+		/**
+		*	查看系统消息
+		*/
+		public function GetSysMessages(){
+			$messages = $this->usermessage_model->GetSysMessages();
+            /*为了方便前端实现分页效果，这里将数据按每页17条分,放进一个二维数组中*/
+            $result = array();
+            $temp = array();
+            for($i = 0;$i < count($messages);){
+                array_push($temp,$messages[$i]);
+                ++$i;
+                if($i % 17 == 0){
+                    array_push($result,$temp);
+                    $temp = array();
+                }
+            }
+            if(count($temp) !== 0){
+                array_push($result,$temp);
+            }
+
+			$info = $this->getInfo(101,$result);
+			echo json_encode($info);
+		}
 }
 
  ?>
