@@ -30,13 +30,13 @@
     text-align: center;
     width: 100%;
   }
-.act-span{
+.act-spans{
   height: 26px;
   display: inline-block;
   text-align: center;
   margin-bottom: 8px;
 }
-.dis{
+.diss{
   color: #000;
   font-size: 20px;
   display: inline-block;
@@ -67,16 +67,21 @@
   display: inline-block;
 }
 #nav {
+      display: none;
       width:50px; 
       height: 50px; 
       position:fixed;
       right:18%;
       top:80%;
       border-radius: 8px;
-      box-shadow: #666 0px 0px 10px;
+      box-shadow: #ddd 5px 5px 10px;
       background: url(/assets/i/act_img/activity_float_button.fw.png);
       }
-.the_act_body
+.head_month{
+  font-size: 40px;
+  padding-top: 40px;
+}
+  .the_act_body
     {   
     width: 1000px;
     padding-top: 20px;
@@ -85,7 +90,31 @@
     display: inline-block; 
     text-align: center;
     }
+    .the_act_bodys
+    {   
+    width: 1000px;
+    padding-top: 20px;
+    background: #eee;
+    position: relative;
+    display: inline-block; 
+    text-align: center;
+    }
+.js-load-more{
+  left: 10px;
+  position: relative;
+  padding:0 15px;
+  width:990px;
+  height:60px;
+  background-color:#D31733;
+  color:#fff;
+  line-height:30px;
+  text-align:center;
+  border-radius:5px;
+  margin:20px auto;
+  border:0 none;
+  font-size:30px;
 
+}
 
 
 
@@ -119,6 +148,7 @@
      margin-top: 5px;
      width: 226px;
      height: 168px;
+     overflow:hidden;
   }
   .ativitytitle{
      width: 228px;
