@@ -194,7 +194,9 @@ body{
 }
 
 .head-icon img{
-    height: 100%;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
 }
 
 .msg-setting{
