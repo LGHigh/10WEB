@@ -67,6 +67,7 @@
     </div>
 </body>
 
+<script type="text/javascript" src="/assets/js/message.js"></script>
 <script type="text/javascript">
 		$(".msg-setting-btn").click(function(e) {
 			$(e.currentTarget).parent().toggleClass('msg-setting-hidden');
@@ -74,14 +75,15 @@
 
 		$(".setting-delete").click(function(e) {
 			//获取相关用户的id
-			var _re_id = $(e.currentTarget).attr('data-relater-id');
-		});
-
-		var delete_msg = function(re_id){
-			$.ajax({
-				url:'/index.php/api/message/'
+			var id = $(e.currentTarget).attr('data-relater-id');
+			var m = new Message(id);
+			m.delete().then(function(data){
+				if(data.Flag > 0)
+					history.go(0);		
+				else
+					alert('删除失败' + data.Content);
 			});
-		}
+		});
 
         $("#back-btn").click(function(e){
             history.go(-1);

@@ -61,9 +61,24 @@
                 TargetUserID:re_id
             }
         }).then(function(data){
-            return data;
+            return JSON.parse(data);
         });
     };
+
+    /**
+     * 删除与这个用户的对话
+     */
+    Message.fn.delete = function(){
+        return $.ajax({
+            url:'/index.php/api/message/DelRelMsg',
+            type:'post',
+            data:{
+                RelaterID:this.re_id
+            }
+        }).then(function(data){
+            return JSON.parse(data);
+        });
+    }
 
     /**
      * 返回对get的信息的html封装
