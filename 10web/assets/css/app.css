@@ -96,6 +96,7 @@ body{min-width: 1000px;}
 	float: left;
 	display:inline;
 	height: 100%;
+	width: 100%;
 }
 
 #am-imglist li img{
@@ -189,7 +190,7 @@ body{min-width: 1000px;}
 }
 
 .am-summary{
-	height: 270px;
+	min-height: 270px;
 }
 .am-summary1{
 	width: 25%;
@@ -220,7 +221,6 @@ body{min-width: 1000px;}
 }
 .am-summary-content{
 	font-size: 15px;
-	/*text-align: center;*/
 	width: 80%;
 	margin: 0 auto !important;
 }
@@ -235,7 +235,19 @@ body{min-width: 1000px;}
 	text-align: center;
 	margin: 0 0 10px 0;
 	font-size: 20px;
+	cursor: pointer;
+	position: relative;
+	height: 50px;
 }
+
+.am-drop > span{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%) ;
+}
+
+
 .am-drop:hover{
 	color:#666 !important;
 }

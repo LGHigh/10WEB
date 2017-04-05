@@ -111,7 +111,8 @@
 
 .header-user-icon img{
   height: 45px;
-  padding-right: 10px;
+  width: 45px;
+  border-radius:100%;
 }
 
 .red-point{

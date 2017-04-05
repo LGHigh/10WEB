@@ -11,6 +11,8 @@
   <meta http-equiv="pragma" content="no-cache">  
   <!-- HTTP 1.0 -->  
   <meta http-equiv="cache-control" content="no-cache">  
+  <meta http-equiv="expires" content="0">  
+  
   <link rel="alternate icon" type="image/png" href="/assets/i/favicon.png">
   <link rel="stylesheet" href="/assets/css/amazeui.min.css">
   <script src="/assets/js/jquery.min.js"></script>  
