@@ -23,15 +23,28 @@
 </body>
 
 <script type="text/javascript" src="/assets/js/ejs.min.js"></script>
+<script type="text/javascript" src="/assets/js/message.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
     setTimeout(function(){
         main();
     },0);
+    
 
     //获取正在和我对话的用户id
     var re_id = window.location.href.match(/detail.*/)[0];
     re_id = re_id.replace('detail/','');
+    var msg = new Message(re_id);
+    //初始化标题消息
+    msg.getInfo(function(err,data){
+        var NickName = data.NickName;
+        $('#msg-title').text(NickName);
+    });
+    //初始化聊天消息
+    var initMsg = function(){
+        
+    }
 
     //初始化jquery dom变量
     var $msg_content = $("#msg-content");
@@ -51,25 +64,6 @@ $(document).ready(function(){
             }
         });
     };
-
-    var getInitRelData = function(cb){
-        $.ajax({
-            url:'/index.php/api/user/GetUserBaseInfo',
-            type:'post',
-            data:{
-                UserID:re_id
-            },
-            success:function(data){
-                data = data.trim();
-                data = JSON.parse(data);
-                if(data.Flag > 0){
-                    cb(null,data.Content);
-                }else{
-                    cb(data.Content);
-                }
-            }
-        });
-    }
 
     //发送消息
     var sendMsg = function(cb){
@@ -110,17 +104,7 @@ $(document).ready(function(){
         });
     };
 
-    //初始化标题消息
-    var initTitle = function(){
-        getInitRelData(function(err,data){
-            var NickName = data.NickName;
-            $('#msg-title').text(NickName);
-        });
-    }
-
     var main = function(){
-        //加载对话用户信息，控制标题
-        initTitle();
         //加载对话
         initMsg();
         //加载返回按钮功能
