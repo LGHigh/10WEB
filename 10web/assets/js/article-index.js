@@ -22,7 +22,7 @@ $("#user-follow-icon").click(function(){
   $("#user-follow-icon").attr("src","/assets/i/heart-big-active.png");
   $("#user-op-follow").html('已关注');
 });
-
+/*控制显示字数与宽度*/
 $(".article-content").each(function(){
   var maxwidth=23;
   if($(this).text().length>maxwidth){
@@ -43,7 +43,7 @@ $.ajax({
      $.get('/assets/template/article_item_body.html',function(cat_body){
 
      var _html = ejs.render(cat_body,{jsonArray});
-      $('#article-mainpart').html(_html);
+      $('#am-article-mainpart').html(_html);
      });
   }
 });

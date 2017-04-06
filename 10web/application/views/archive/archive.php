@@ -70,7 +70,7 @@
   <!--单条文章-->
   <div id="am-article-mainpart">
 
-  </div>
+</div>
  </div> 
 </div>
 
@@ -116,8 +116,8 @@
 
 
 <script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/jquery-3.1.1.min.js"></script>
 <script src="/assets/js/amazeui.min.js"></script>
 <script src="/assets/js/article-index.js"></script>
+<script src="/assets/js/ejs.min.js"></script>
 </body>
 </html>
