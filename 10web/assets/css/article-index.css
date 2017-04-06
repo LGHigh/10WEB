@@ -140,7 +140,6 @@
 }
 /*主体部分*/
 .am-mainpart{
-	height:1200px;
 	background-color:#f3f3f3;
 }
 
@@ -247,7 +246,14 @@ a:link{
 	float:left;
 	margin-right: 20px;
 	max-height: 250px;
+	max-width:150px;
 }
+
+.article-pic > img{
+	width: 100%;
+	height: 100%;
+}
+
 .article-text{
 	max-height:250px;
 	float:left;
