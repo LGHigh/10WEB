@@ -3,7 +3,7 @@
 <style>
 
 </style>
-<form action="/application/controllers/addactivity.PHP" enctype="multipart/form-data"method="post">
+<form action="/application/controllers/addactivity.PHP"  enctype="multipart/form-data"  method="post">
 <div  class="addactivity">
 <p class="labe_title">标题</p>
 <input type="text" name="InputTitle">
@@ -12,7 +12,8 @@
 <p class="labe_content">内容</p>
 <textarea name="InputContent"></textarea> 
 <p class="labe_poster">宣传海报</p>
-<input type="file" name="file0" id="file0" multiple="multiple" /><br><img src="" id="img0" >
+<input type="file" name="file0" id="file0" multiple="multiple" /><br>
+<img src="" id="img0" >
 <p class="labe_start_time">活动开始时间</p>
 <input   name="Activity_starttime" id="datebut" type="text" placeholder="请选择开始时间"  readonly onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD hh:mm:ss'})">
 <p class="labe_end_time">活动结束时间</p>
@@ -51,6 +52,7 @@ function getObjectURL(file) {
     } else if (window.webkitURL!=undefined) { // webkit or chrome
         url = window.webkitURL.createObjectURL(file) ;
     }
+    console.log(url);
     return url ;
 }
 </script>
