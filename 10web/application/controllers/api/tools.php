@@ -46,6 +46,14 @@ function sendMail($account,$email_info,$base_url = "localhost:6070"){
 
 // 2017-4-11修改 添加了文件上传功能(从服务器上传至七牛云)
 
+ require 'phpupload/autoload.php';
+    
+     // 引入鉴权类
+    use Qiniu\Auth;
+
+    // 引入上传类
+    use Qiniu\Storage\UploadManager;
+
 /**
  * use to upload file to qiniu
  *
@@ -53,13 +61,7 @@ function sendMail($account,$email_info,$base_url = "localhost:6070"){
  * @param string $key -上传到七牛后保存的文件名
  */
 function fileUpload($filePath,$key){
-    require("phpupload/autoload.php");
-    // 引入鉴权类
-    use Qiniu\Auth;
-
-    // 引入上传类
-    use Qiniu\Storage\UploadManager;
-
+   
     // 需要填写你的 Access Key 和 Secret Key
     $accessKey = 'KIQHMOpJhhTwrTt4BX_L0FyCbw7B_s0vIJGz6Acb';
     $secretKey = 'VFdB25SBNfcAjGkeqE4qRdsYI01FNo1It6M-XfB4';
