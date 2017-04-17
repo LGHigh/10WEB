@@ -1,16 +1,14 @@
 <?php
-
-
-
 $con = mysql_connect("www.jyonline.cc:6700","root","password");
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
 mysql_select_db("e0web", $con);
-$sql="INSERT INTO e0_activities(Title,Writer,Source,StartDate,EndDate,Location)
+$id=uniqid();
+$sql="INSERT INTO e0_activities(ID,Title,Writer,Source,StartDate,EndDate,Location)
 VALUES
-('$_POST[InputTitle]','$_POST[InputAuther]','$_POST[InputContent]','$_POST[Activity_starttime]','$_POST[Activity_endtime]','$_POST[InputLocation]')";
+('$id','$_POST[InputTitle]','$_POST[InputAuther]','$_POST[InputContent]','$_POST[Activity_starttime]','$_POST[Activity_endtime]','$_POST[InputLocation]')";
 if (!mysql_query($sql,$con))
   {
   die('Error: ' . mysql_error());
