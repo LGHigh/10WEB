@@ -108,7 +108,8 @@
 
 .header-user-icon img{
   height: 45px;
-  padding-right: 10px;
+  width: 45px;
+  border-radius:100%;
 }
 
 .red-point{
@@ -142,7 +143,7 @@
         </div>
 
         <div class="am-span">
-          <a class="am-dropdown-toggle"  href="javascript:;">
+          <a class="am-dropdown-toggle"  href="/index.php/project">
             <span class="dis">项目</span>
           </a>
         </div>
@@ -155,7 +156,7 @@
                 <li><a href="/index.php/team">社团简介</a></li>
                 <li><a href="/index.php/archive">技术文章</a></li>
                 <li><a href="/index.php/activity">社团活动</a></li>
-                <li><a href="/index.php/webtools">web工具s</a></li>
+                <li><a href="/index.php/webtools">web工具</a></li>
               </ul>
             </li>
           </a>
