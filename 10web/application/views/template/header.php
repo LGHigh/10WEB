@@ -92,10 +92,7 @@
 .am-topright:hover{
   background-color: #f8f8f8 !important;
 } 
-
-
 /*右边的用户头像和登陆注册按钮*/
-
 /*重写amaze ui 样式*/
 #header-right .am-dropdown-content{
     width: 110px;
@@ -139,7 +136,7 @@
           </a>
         </div>
 
-        <div class="am-span">
+      <div class="am-span">
           <a class="am-dropdown-toggle"  href="/">
             <span class="dis">首页</span>
           </a>

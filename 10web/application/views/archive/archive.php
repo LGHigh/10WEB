@@ -15,9 +15,7 @@
   <link rel="stylesheet" href="/assets/css/article-index.css">
   <link rel="stylesheet" href="/assets/css/app.css">
 </head>
-
 <body class="am-with-topbar-fixed-top">
-
 <?php 
   require('./application/views/template/header-article.php');
 ?>

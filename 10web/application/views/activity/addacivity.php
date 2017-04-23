@@ -112,9 +112,4 @@
   //html 结束通用底部
   require('./application/views/template/html_end.php');
 ?>
-<script type="text/javascript" src="/assets/js/ejs.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="/assets/js/activity.js"></script>
-
-
 
