@@ -32,10 +32,10 @@ class User extends CI_Controller {
       return $info;
     }
 
-    /**
-     *   used to signup and send a auth email to user
-     */
-    public function signUp(){
+      /**
+       *   used to signup and send a auth email to user
+       */
+       public function signUp(){
         $info = null;
 
         //check the post argument
