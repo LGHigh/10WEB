@@ -12,7 +12,7 @@ class UserMessage_model extends CI_Model{
 	public function GetCommunicatedUser($userid){
 
 		$sql_format=<<<STR
-		select * ,User as Abouter from 
+		select * ,User as Abouter from
 		e0_view_user_msg
 		where User = '%s' AND State <> -1
 		group by Relater
@@ -29,10 +29,10 @@ STR;
 	*/
 	public function GetMessage($userid,$targetuserid){
 		$sql_format = <<<STR
-			SELECT 
+			SELECT
 			*,'%s' as Abouter
 			FROM e0_view_user_msg
-			WHERE 
+			WHERE
 			User = '%s' AND Relater = '%s'
 			AND State <> -1
 			Order By SendTime
@@ -53,22 +53,11 @@ STR;
 		return $this->db->affected_rows();
 	}
 
-	/**
-	*	传入消息id，在表中将状态State设置为已读:0->未读，1->已读, -1->已删除
-	*/
-	// public function SetMessageRead($messageid){
-	// 	$sql = "UPDATE e0_msg SET State = ".$this->db->escape(1)." WHERE ID = ".$this->db->escape($messageid);
-	// 	$sql2 = "SELECT * FROM e0_msg WHERE ID = ".$this->db->escape($messageid);
-	// 	$this->db->query($sql);
-	// 	return $this->db->query($sql2)->result_array();
-	// }
-
-
 	public function SetUserMsgRead($userid,$targetuserid){
 		$sql_format = <<<STR
 		UPDATE e0_msg
 		SET State = 1
-		Where 
+		Where
 		User = '%s' AND Relater = '%s'
 		AND State = 0
 STR;
@@ -77,7 +66,7 @@ STR;
 	}
 
 	/**
-	 * 获取当前用户的未读消息的数目 
+	 * 获取当前用户的未读消息的数目
 	 *
 	 * @param string $user_id 当前用户的id
 	 * @return array 数据库返回的结果
@@ -86,7 +75,7 @@ STR;
 		$sql_format = <<<STR
 		SELECT count(*) AS UnreadCount
 		FROM e0_view_user_msg
-		WHERE User = '%s'AND State = 0 
+		WHERE User = '%s'AND State = 0
 STR;
 		$sql = sprintf($sql_format,$user_id);
 		$result = $this->db->query($sql);
@@ -105,12 +94,12 @@ STR;
 		$sql_format = <<<STR
 		UPDATE e0_msg
 		SET State = -1
-		WHERE 
+		WHERE
 		User = '%s' AND Relater = '%s'
 STR;
 		$sql = sprintf($sql_format,$user_id,$relater_id);
 		try{
-			$result = $this->db->query($sql);	
+			$result = $this->db->query($sql);
 		}catch(Exception $e){
 			return false;
 		}
@@ -148,9 +137,9 @@ STR;
 		$send_time=date("Y-m-d H:i:s");
 		$msgid = uniqid();
 		$sql_format = <<<STR
-			INSERT INTO e0_msg 
+			INSERT INTO e0_msg
 			(ID,User,Relater,Sender,Receiver,Content,SendTime,Type,State)
-			VALUES 
+			VALUES
 			('%s','%s','%s','%s','%s','%s','%s',%s,%s)
 STR;
 		if($targetuserid === null){
@@ -183,6 +172,27 @@ STR;
 		$this->db->query($sql);
 		return $this->db->affected_rows();
 	}
-}
 
-?>
+	/**
+	*	获取所有系统消息
+	*	Type: 0->系统消息，1->管理员发给用户的消息，2->普通用户的消息, -1->已经删除的消息
+	* @return 所有系统消息
+	*/
+	public function GetSysMessages(){
+		$sql_format = <<<STR
+		SELECT DISTINCT ID,Content,SendTime
+		FROM e0_msg WHERE Type = %s ORDER BY SendTime DESC
+STR;
+		$sql = sprintf($sql_format,1);
+		$messages = $this->db->query($sql);
+		return $messages->result_array();
+	}
+
+	/**
+	*	获取未读系统消息
+	*/
+	public function GetUCForAdmin(){
+		$sql = "SELECT	*  FROM e0_msg WHERE Type = 1 AND State = 0";
+		return $this->db->query($sql)->num_rows();
+	}
+}

@@ -92,10 +92,7 @@
 .am-topright:hover{
   background-color: #f8f8f8 !important;
 } 
-
-
 /*右边的用户头像和登陆注册按钮*/
-
 /*重写amaze ui 样式*/
 #header-right .am-dropdown-content{
     width: 110px;
@@ -111,7 +108,8 @@
 
 .header-user-icon img{
   height: 45px;
-  padding-right: 10px;
+  width: 45px;
+  border-radius:100%;
 }
 
 .red-point{
@@ -138,14 +136,14 @@
           </a>
         </div>
 
-        <div class="am-span">
+      <div class="am-span">
           <a class="am-dropdown-toggle"  href="/">
             <span class="dis">首页</span>
           </a>
         </div>
 
         <div class="am-span">
-          <a class="am-dropdown-toggle"  href="javascript:;">
+          <a class="am-dropdown-toggle"  href="/index.php/project">
             <span class="dis">项目</span>
           </a>
         </div>
@@ -158,7 +156,7 @@
                 <li><a href="/index.php/team">社团简介</a></li>
                 <li><a href="/index.php/archive">技术文章</a></li>
                 <li><a href="/index.php/activity">社团活动</a></li>
-                <li><a href="/index.php/webtools">web工具s</a></li>
+                <li><a href="/index.php/webtools">web工具</a></li>
               </ul>
             </li>
           </a>

@@ -1,6 +1,7 @@
 <?php
 
 require("tools.php");
+require("Archive.php");
 
 class User extends CI_Controller {
     public function __construct(){
@@ -31,10 +32,10 @@ class User extends CI_Controller {
       return $info;
     }
 
-    /**
-     *   used to signup and send a auth email to user
-     */
-    public function signUp(){
+      /**
+       *   used to signup and send a auth email to user
+       */
+       public function signUp(){
         $info = null;
 
         //check the post argument
@@ -71,7 +72,7 @@ class User extends CI_Controller {
         if(!sendMail($account,$email_info,$this->config->item('base_url'))){
           $info = $this->getInfo(-3,"signup fail","");
         }
-        
+
         echo urldecode(json_encode($info));
     }
 
@@ -132,7 +133,9 @@ class User extends CI_Controller {
      * 如果要获取以上三种中的某种直接传入参数0，1，2即可，但是如果要获取所有自己写的文章，即要获取类型1和类型2的文章，传入参数3(但是3不是用户和文章的关系)
      */
     public function GetUserArchives(){
-        $archives = $this->Archives_model->findUserArchive();//传入
+        $user_id = $userid = $this->session->userdata['info'][0]['ID'];
+        $type = $_POST['Type'];
+        $archives = $this->archives_model->findArcByUserID($user_id,$type);//传入
         print_r($archives);
     }
 
@@ -153,7 +156,7 @@ class User extends CI_Controller {
       }catch(Exception $e){
         echo $this->getInfo('-1',$e);
       }
-    }  
+    }
 
     /**
      * 根据传来的UserID返回用户的NickName,Account,HeadIcon,Profile
@@ -170,6 +173,30 @@ class User extends CI_Controller {
       $info = $this->getInfo(100,$result[0],"");
       echo json_encode($info);
     }
+
+    /**
+    * 修改用户信息
+    */
+    public function EditInfo(){
+      $newNickName = $_POST['newNickName'];
+      $newProfile = $_POST['newProfile'];
+      $newHeadIcon = $_POST['newHeadIcon'];
+      if(!isset($this->session->userdata['info'])){
+        $info = $this->getInfo(-8,"you have not logged in","");
+        echo json_encode($info);
+        return ;
+      }
+      $user_id = $this->session->userdata['info'][0]['ID'];
+      $affected = $this->user_model->EditInfo($user_id,$newNickName,$newProfile,$newHeadIcon);
+      if($affected == 0){
+          $info = $this->getInfo(-15,"edit fail","");
+          echo json_encode($info);
+      }else{
+        $info = $this->getInfo(100,"edit successfully","");
+        echo json_encode($info);
+      }
+
+    }
 }
-    
+
 ?>
