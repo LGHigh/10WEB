@@ -32,10 +32,10 @@ class User extends CI_Controller {
       return $info;
     }
 
-    /**
-     *   used to signup and send a auth email to user
-     */
-    public function signUp(){
+      /**
+       *   used to signup and send a auth email to user
+       */
+       public function signUp(){
         $info = null;
 
         //check the post argument
@@ -172,6 +172,30 @@ class User extends CI_Controller {
       $result = $this->user_model->get_by_id($user_id);
       $info = $this->getInfo(100,$result[0],"");
       echo json_encode($info);
+    }
+
+    /**
+    * 修改用户信息
+    */
+    public function EditInfo(){
+      $newNickName = $_POST['newNickName'];
+      $newProfile = $_POST['newProfile'];
+      $newHeadIcon = $_POST['newHeadIcon'];
+      if(!isset($this->session->userdata['info'])){
+        $info = $this->getInfo(-8,"you have not logged in","");
+        echo json_encode($info);
+        return ;
+      }
+      $user_id = $this->session->userdata['info'][0]['ID'];
+      $affected = $this->user_model->EditInfo($user_id,$newNickName,$newProfile,$newHeadIcon);
+      if($affected == 0){
+          $info = $this->getInfo(-15,"edit fail","");
+          echo json_encode($info);
+      }else{
+        $info = $this->getInfo(100,"edit successfully","");
+        echo json_encode($info);
+      }
+
     }
 }
 

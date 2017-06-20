@@ -1,4 +1,8 @@
-<?php  
+
+
+<style>
+
+</style><?php  
    //html 开始通用头部
    require('./application/views/template/html_begin.php');
 ?>
@@ -111,3 +115,6 @@
 <script type="text/javascript" src="/assets/js/ejs.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="/assets/js/activity.js"></script>
+
+
+

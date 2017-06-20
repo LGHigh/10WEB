@@ -5,7 +5,7 @@
   height: 32px;
   position: absolute;
     top: 50px;
-    right: 25%;
+    right: 540px;
     border-radius: 20px;
     outline: none;
     border-color: #333333;
@@ -15,7 +15,7 @@
 .am-search-icon{
   position: absolute;
   top: 55px;
-  right: 25.5%
+  right: 545px
 }
  .am-topbar-height{
   height:100px !important;

@@ -70,6 +70,9 @@
 	margin:30px 0;
 }
 /*文章信息*/
+.am-article-detail > img{
+	max-width:100%;
+}
 #am-article-title{
 	font-style: bold;
 	font-size: 32px;
@@ -83,7 +86,7 @@
 #am-article-timeAssess{
 	color:#49be38;
 	font-size: 12px;
-}
+}s
 /*配图信息*/
 .am-article-pic{
 	text-align:center;

@@ -15,15 +15,14 @@
   <link rel="stylesheet" href="/assets/css/article-index.css">
   <link rel="stylesheet" href="/assets/css/app.css">
 </head>
-
 <body class="am-with-topbar-fixed-top">
-
 <?php 
   require('./application/views/template/header-article.php');
 ?>
+
 <div class="am-mainpart">
  <!--用户设置栏-->
- <div class="am-container"> 
+ <div class="am-container"s> 
   <div class="user">
     <div class="user-pic">
       <img src="/assets/i/user-icon.jpg" style="height:100px;width:100px;float:left;">
@@ -67,53 +66,9 @@
   </div>
   
   <!--单条文章-->
-  <div class="article-part">
-    <div class="author-pic">
-      <img src="/assets/i/user-icon.jpg" class="author-pic-size">
-    </div>
-    <div class="article-wrapper">
+  <div id="am-article-mainpart">
 
-    <div class="article-board">
-    <div class="author-name">
-      <p class="author-name-pos">一只大牛</p>
-    </div>
-
-    <div class="article-content">
-      <div class="article-pic">
-        <img src="/assets/i/JSPic.png">
-      </div>
-
-      <div class="article-text">
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">
-        <h1>Javascript的历史</h1>
-        </a>
-        <p>title: JavaScript的历史layout: pagecategory: introductiondate: 2013-01-10modifiedOn: 2013-12-05声明，这是阮一峰老师的文章，附上链接：http://javascript.ruanyifeng.com/introduction/history.html 理解现在的最好方法之一，就是了解历史，本节将全面介绍……JavaScript的历史。
-        </p>
-      </div>
-    </div>
-
-    <div class="article-below-wrapper">
-      <div class="article-topic">
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;" >
-        <span class="am-icon-tag "></span> 前端javascript开发
-        </a>
-      </div>
-
-      <div class="article-follows">
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;" >
-        <span  >
-          <img id="am-heart-active"  src="/assets/i/heart-small.png" >
-        </span>
-        </a>
-        <span id="article-follow-users">100</span>
-      </div>
-      <div class="article-publish-date">
-        <span id="article-user-publish-date" >2017年1月26日 17:30:32</span>
-      </div>
-    </div>
-    </div>
-  </div>
-  </div>
+</div>
  </div> 
 </div>
 
@@ -147,6 +102,7 @@
     </div>
   </div>
 </div>
+</div>
 
 
 
@@ -158,8 +114,8 @@
 
 
 <script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/jquery-3.1.1.min.js"></script>
 <script src="/assets/js/amazeui.min.js"></script>
 <script src="/assets/js/article-index.js"></script>
+<script src="/assets/js/ejs.min.js"></script>
 </body>
 </html>

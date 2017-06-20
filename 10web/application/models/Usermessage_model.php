@@ -53,17 +53,6 @@ STR;
 		return $this->db->affected_rows();
 	}
 
-	/**
-	*	传入消息id，在表中将状态State设置为已读:0->未读，1->已读, -1->已删除
-	*/
-	// public function SetMessageRead($messageid){
-	// 	$sql = "UPDATE e0_msg SET State = ".$this->db->escape(1)." WHERE ID = ".$this->db->escape($messageid);
-	// 	$sql2 = "SELECT * FROM e0_msg WHERE ID = ".$this->db->escape($messageid);
-	// 	$this->db->query($sql);
-	// 	return $this->db->query($sql2)->result_array();
-	// }
-
-
 	public function SetUserMsgRead($userid,$targetuserid){
 		$sql_format = <<<STR
 		UPDATE e0_msg
