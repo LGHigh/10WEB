@@ -22,6 +22,8 @@ phpmyadmin:
 
 web:
   image: eboraas/apache-php
+  ports:
+    - "6070:80"
   volumes:
     - "./10web:/var/www/html"
   restart: "always"
