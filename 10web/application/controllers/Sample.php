@@ -14,5 +14,9 @@ class Sample extends CI_Controller {
     public function picture(){
         $this->load->view('sample/picture');
     }
+
+    public function pictureReader(){
+        $this->load->view('sample/picture_reader.php');
+    }
 }
 ?>
