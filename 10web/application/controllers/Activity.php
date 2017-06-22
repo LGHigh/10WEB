@@ -7,10 +7,22 @@ class Activity extends CI_Controller {
       $this->load->model('Activities_model');
       $this->load->helper('url');
     }
-    public function index()
-    {
-       
-       $this->load->view('/activity/activity');
+
+    public function index(){
+      //加载所有的活动列表
+      $this->load->view('/activity/activity');
     }
+
+    public function create(){
+      //创建一个新的活动的界面
+      
+      $this->load->view('activity/add_activity');
+    }
+
+
+    public function update($id){
+      //修改一个已经存在的活动
+    }
+
 }
 ?>
