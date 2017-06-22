@@ -12,5 +12,17 @@ class Activities_model extends CI_Model {
 		$query = $this->db->order_by('StartDate', 'DESC');
 		return $query->get('e0_activities')->result_array();
 	}
+
+	public function add($data){
+		return $this->db->insert('e0_activities',$data);
+	}
+
+	public function getByID($id){
+		$query = $this->db->get_where('e0_activities', array('ID' => $id));
+		$r = $query->result_array();
+		if(count($r) == 0)
+			return null;
+		return $r[0];
+	}
 }
 ?>
