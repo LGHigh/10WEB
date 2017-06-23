@@ -20,38 +20,15 @@
     <div class="act_headers" id="act_headers_2">
       <div class="act_headers" id="act_headers_3">
         <div class="act_headers_4">
-          <div class="act_headcontent">
-            <div class="act-spans">
-              <a class="act-recent" href="#">
-      <span class="diss"  id="act_span_recent">最近</span>
-    </a>
-            </div>
-            <div class="act-spans">
-              <a class="act-future" href="#">
-     <span class="diss"   id="act_span_future">将来</span>
-    </a>
-            </div>
-            <div class="act-spans">
-              <a class="act-intrest" href="#">
-      <span class="diss"  id="act_span_interst">有点意思</span>
-    </a>
-            </div>
-            <div class="act-spans">
-              <a class="act-useful" href="javascript:;">
-     <span class="diss"  id="act_span_ganhuo">干货</span>
-    </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+  
   <!-- 活动body模块样式-->
   <div class="the_act_bodys">
 
-    <div class="head_month">-壹月-</div>
     <div class="the_act_body" id="the_act_body">
-      <?php for($i=1;$i<=4;$i++){ ?>
       <div class="activitybody">
         <div class="act_user" id="act_photo_and_name">
           <div class="act_user" id="act_user_photo">
@@ -105,11 +82,10 @@
           </div>
         </div>
       </div>
-      <?php } ?>
+
     </div>
 
     <div class="nav" id="nav"></div>
-    <button class="js-load-more">加载更多</button>
   </div>
 
   <script type="text/javascript" src="/assets/js/ejs.min.js"></script>
