@@ -13,7 +13,7 @@ class Activity extends CI_Controller {
     }
 
     public function getAll(){
-      print_r($this->Activities_model->getAll());
+      $this->_echo(100,$this->Activities_model->getAll());
     }
 
     public function add(){

@@ -116,8 +116,6 @@
 
 }
 
-
-
 .activitybody{
     margin-left: 20px;
     margin-top: 50px;
@@ -129,7 +127,9 @@
     border-radius: 8px;
     box-shadow: #666 0px 0px 10px;
     text-align: left;
-  }
+    cursor: pointer;
+}
+
 .act_user{
     position: relative;
     display: inline-block; 
