@@ -17,6 +17,13 @@ new Vue({
                 console.log(r.Content);
                 vm.act = r.Content;
             });
+        },
+        click:function(e){
+            var $ele = $(e.currentTarget);
+            if($ele.attr('data-redirect').trim()){
+                return window.location.href = $ele.attr('data-redirect');
+            }
+            return window.location.href = `/index.php/activity/p/${ $ele.attr('id') }`;
         }
     }
 });

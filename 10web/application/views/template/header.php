@@ -45,8 +45,6 @@
   display: inline;
 }
 
-
-
 .dis{
   font-size: 16px;
   display: inline-block;
