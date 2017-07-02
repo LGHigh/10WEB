@@ -21,7 +21,9 @@
 <div class="am-article-detail" id="am-article-detail">
 
 </div>
+<div id="am-article-recommendContainer">
 
+</div>
 <div class="hope">
   <div class="am-g am-container">
     <div class="am-leftpart">
@@ -46,8 +48,7 @@
     </div>
   </div>
 </div>
-<div id="am-article-recommendContainer">
-</div>
+
 
 
 <!--[if lt IE 9]>

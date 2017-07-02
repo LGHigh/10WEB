@@ -39,6 +39,10 @@
 	float:left;
 	line-height: 100px;
 }
+.am-author-pic img{
+	height:49px;
+	width:50px;
+}
 .am-author-icon{
 	margin:0 10px 0 0;
 }
@@ -70,7 +74,7 @@
 	margin:30px 0;
 }
 /*文章信息*/
-.am-article-detail > img{
+#am-article-content  img{
 	max-width:100%;
 }
 #am-article-title{
@@ -134,11 +138,19 @@
 }
 .am-recommend-icon{
 	width: 36px;
+	height:36px;
 	border-radius: 36px;
 	float: left;
 	margin: 0 10px;
+	border:0px;
 }
 .am-recommend-list-title-style{
 	margin: 0 !important;
 	line-height: 36px;
+}
+.am-recommend-list-title-style a:hover{
+	color:#666;
+}
+.am-recommend-list-title-style a{
+	color:#000;
 }
