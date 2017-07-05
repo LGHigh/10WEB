@@ -19,6 +19,13 @@ class Activity extends CI_Controller {
       $this->load->view('activity/add_activity');
     }
 
+    public function p($id = null){
+      $r = $this->Activities_model->getByID($id);
+      $data = array(
+        'activity' => $r
+      );
+      $this->load->view('activity/p', $data);
+    }
 
     public function update($id){
       //修改一个已经存在的活动

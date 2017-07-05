@@ -10,7 +10,7 @@ $(function(){
     success:function(data){
       var Article=JSON.parse(data);
       var Content = JSON.parse(Article.Content);
-      $.get('/assets/template/article_detail_body1.html',function(body){
+      $.get('/assets/template/article_detail_body.html',function(body){
        var _html = ejs.render(body,Content);
         $('#am-article-detail').html(_html);
        });
@@ -34,7 +34,7 @@ $.ajax({
      $.get('/assets/template/article_detail_body2.html',function(cat_body){
 
      var _html = ejs.render(cat_body,{Rec});
-      $('.am-article-recommendContainer').html(_html);
+      $('#am-article-recommendContainer').html(_html);
      });
   }
 });

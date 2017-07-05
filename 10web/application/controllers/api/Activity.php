@@ -1,176 +1,106 @@
 <?php
-
-//return model
-
-
 class Activity extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('Activities_model');
         $this->load->helper('url_helper');
         $this->load->library('session');
+        $this->load->library('form_validation');
     }
 
-    public function index()
-    {
+    public function index(){
        echo "api/activity";
     }
 
-    /**
-     * use to make a info
-     *
-     * @param int $Flag - the flag
-     * @param string $Content -the content
-     * @param string $Extra -the extra info
-     * @return array
-     */
-    private function getInfo($Flag = 101,$Content = "",$Extra = ""){
-      return array("Flag" => $Flag,"Content" => $Content,"Extra" => $Extra);
+    public function getAll(){
+      $this->_echo(100,$this->Activities_model->getAll());
     }
 
-    /**
-     * use to add activity
-     */
     public function add(){
-      $error_code = $this->addActivity();
-      if ($error_code) {
-        $info = $this->getInfo(100,"add activity success","");
-      } else {
-        $info = $this->getInfo(-101,"fail","");
+      $i = $this->input;
+      //构造验证规则
+      $validation_config = array(
+         array(
+           'field' => 'Title',
+           'label' => '活动标题',
+           'rules' => 'trim|required|max_length[20]'
+         ),
+         array(
+           'field' => 'Source',
+           'label' => '活动内容',
+           'rules' => 'required'
+         ),
+         array(
+           'field' => 'LitPic',
+           'label' => '活动图片',
+           'rules' => 'trim|required'
+         ),
+         array(
+           'field' => 'StartDate',
+           'label' => '开始时间',
+           'rules' => 'date|required'
+         ),         
+         array(
+           'field' => 'EndDate',
+           'label' => '结束时间',
+           'rules' => 'date|required'
+         ),         
+         array(
+           'field' => 'Location',
+           'label' => '活动地点',
+           'rules' => 'required|max_length[20]'
+         )
+      );
+
+      //验证
+      $this->form_validation->set_rules($validation_config);
+      if($this->form_validation->run() === FALSE) {
+          $this->_error(validation_errors());
+          return ;
       }
-      echo json_encode($info) ;
+
+      try{
+        //其他一些自动生成的信息
+        $writer = $this->session->userdata['info'][0]['NickName'];
+        $other = array(
+          'ID' => uniqid(),
+          'PubDate' => date('Y-m-d h:m:s'),
+          'ModiDate' => date('Y-m-d h:m:s'),
+          'Writer' => $writer,
+          'Click' => 0
+        );
+
+        $data = array_merge($i->post(NULL,true), $other);
+        $this->Activities_model->add($data);
+        $this->_echo(100,$data);
+      }catch(Error $error){
+        $this->_error($error);
+      }
     }
 
-    /**
-     * use to delete activity
-     */
-    public function del(){
-      $error_code = $this->delActivity();
-      if ($error_code) {
-        $info = $this->getInfo(100,"delete activity success","");
-      } else {
-        $info = $this->getInfo(-101,"fail","");
-      }
-      echo json_encode($info) ;
+    public function get($id = null){
+      if($id == null)
+        return $this->getAll();
+      $d = $this->Activities_model->getByID($id);
+      $this->_echo(100,$d);
     }
 
-    /**
-     * use to update activity
-     */
     public function edit(){
-      $error_code = $this->editActivity();
-      if ($error_code) {
-        $info = $this->getInfo(100,"update activity success","");
-      } else {
-        $info = $this->getInfo(-101,"fail","");
-      }
-      echo json_encode($info) ;
+
     }
 
-    /**
-     * use to find activity
-     */
-    public function find(){
-      $row = $this->findActivity();
-      if ($row) {
-        $info = $this->getInfo(100,json_encode($row),"");
-      } else {
-        $info = $this->getInfo(-101,"fail","");
-      }
-      echo json_encode($info) ;
+    //--------私有函数
+    private function _echo($state , $data){
+      echo json_encode(array(
+        'Flag' => $state,
+        'Content' => $data,
+        'Extra' => NULL
+      ));
     }
 
-    //--------------------------->2017年3月1日添加
-    public function addActivity() {
-		$Title = $_POST['Title'];
-		$Source = $_POST['Source'];
-		$Writer = null;
-		$UserID = null;
-		if($this->session->userdata['info'][0]['ID']){
-          $UserID = $this->session->userdata['info'][0]['ID'];
-          $Writer = $this->session->userdata['info'][0]['Account'];
-        }
-        else{
-          $info = array(
-              "Flag" => -101,
-              "Content" => urldecode("你没登陆"),
-              "Extra" => ""
-          );
-          echo urldecode(json_encode($info));
-          return;
-        }
-		$RedirectUrl = "";
-		$LitPic = "";
-		if(isset($_POST['RedirectUrl']))
-			$RedirectUrl = $_POST['RedirectUrl'];
-		if(isset($_POST['LitPic']))
-			$LitPic = $_POST['LitPic'];
-		$PubDate = date("Y-m-d H:i:s");
-		$id = md5($PubDate.$Title);
-		$error_code = $this->Activities_model->addAct($id, $Title, $UserID, $Writer, $Source, $RedirectUrl, $LitPic, $PubDate);
-		return $error_code;
-	}
-
-  public function delActivity() {
-		$Title = $_POST['Title'];
-		$ID = $_POST['ID'];
-		$error_code = $this->Activities_model->delAct($ID,$Title);
-		return $error_code;
-	}
-
-  public function editActivity() {
-		$OldTitle = $_POST['OldTitle'];
-		$ID = $_POST['ID'];
-		$UserID = null;
-		if($this->session->userdata['info'][0]['ID']){
-          $UserID = $this->session->userdata['info'][0]['ID'];
-        }
-        else{
-          $info = array(
-              "Flag" => -101,
-              "Content" => urldecode("你没登陆"),
-              "Extra" => ""
-          );
-          echo urldecode(json_encode($info));
-          return;
-        }
-		$NewTitle = $OldTitle;
-		$Source = $_POST['OldSource'];
-		$RedirectUrl = $_POST['OldRedirectUrl'];
-		$LitPic = $_POST['OldLitPic'];
-
-		$Release = null;//修改文章发布状态的：1 -> 发布，2 -> 取消发布
-		if(isset($_POST['NewSource']))
-			$Source = $_POST['NewSource'];
-		if(isset($_POST['NewTitle']))
-			$NewTitle = $_POST['NewTitle'];
-		if(isset($_POST['NewRedirectUrl']))
-			$RedirectUrl = $_POST['NewRedirectUrl'];
-		if(isset($_POST['NewLitPic']))
-			$LitPic = $_POST['NewLitPic'];
-
-		if(isset($_POST['Release']))
-			$Release = $_POST['Release'];
-		$error_code = $this->Activities_model->editAct($ID,$UserID,$OldTitle,$NewTitle,$Source,$RedirectUrl,$LitPic,$Release);
-		return $error_code;
-	}
-  //Type: 0 -> 查找用户收藏的类型   1 ->  查找用户已发布的文章	2 -> 查找用户没有发布的文章	3 -> 查找用户所有的文章
-	public function findActivity() {
-		$Title = null;
-		if(isset($_POST['Title']))
-			$Title = $_POST['Title'];
-		$ID = $_POST['ID'];
-		$row = $this->Activities_model->findAct($ID,$Title);
-		return $row;
-	}
-
-  public function findUserActivity() {
-		$Type = $_POST['Type'];
-		$UserID = $_POST['UserID'];
-		$row = $this->Activities_model->findUserAct($UserID, $Type);
-		return $row;
-	}
-  
+    private function _error($data){
+      $this->_echo(-100,$data);
+    }
 }
 
 ?>
