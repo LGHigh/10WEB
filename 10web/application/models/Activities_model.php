@@ -13,7 +13,7 @@ class Activities_model extends CI_Model {
 		return $query->get('e0_activities')->result_array();
 	}
 
-	public function add($data){
+	public function create($data){
 		return $this->db->insert('e0_activities',$data);
 	}
 
@@ -23,6 +23,11 @@ class Activities_model extends CI_Model {
 		if(count($r) == 0)
 			return null;
 		return $r[0];
+	}
+
+	public function delete($id){
+		$this->db->where('id', $id);
+		$this->db->delete('e0_activities');
 	}
 }
 ?>

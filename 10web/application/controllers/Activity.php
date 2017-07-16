@@ -15,7 +15,6 @@ class Activity extends CI_Controller {
 
     public function create(){
       //创建一个新的活动的界面
-      
       $this->load->view('activity/add_activity');
     }
 
@@ -29,6 +28,10 @@ class Activity extends CI_Controller {
 
     public function update($id){
       //修改一个已经存在的活动
+    }
+
+    public function delete($id){
+
     }
 
 }
