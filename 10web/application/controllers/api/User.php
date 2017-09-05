@@ -92,7 +92,7 @@ class User extends CI_Controller {
       if($state === 1){
           $info = $this->getInfo(-4,"account has not been activated","");
       }
-      //已经激活，可以登陆
+      //已经激活，可以登录
       else if($state === 2){
          $userinfomation = $this->sign_model->GetUserInfo($account);
          //$this->session->set_userdata($userinfomation);
