@@ -91,7 +91,7 @@
 .am-topright:hover{
   background-color: #f8f8f8 !important;
 } 
-/*右边的用户头像和登陆注册按钮*/
+/*右边的用户头像和登录注册按钮*/
 /*重写amaze ui 样式*/
 #header-right .am-dropdown-content{
     width: 110px;
@@ -217,7 +217,7 @@
     $.get('/index.php/api/message/GetUnreadMsgCount',function(data){
       data = JSON.parse(data);
       if(data.Flag > 0){
-        //已经登陆执行程序
+        //已经登录执行程序
         var UnreadCount = data.Content.UnreadCount;
         if(UnreadCount > 0){
           $('#unread-msg-count').text(UnreadCount);

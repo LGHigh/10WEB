@@ -8,7 +8,7 @@ class Message extends CI_Controller {
       $this->load->library('session');
       $this->load->helper('url');
       $this->load->model('usermessage_model');
-      //如果没有登陆，那么就跳转首页
+      //如果没有登录，那么就跳转首页
       if(!$this->_session_get_id()){
         redirect('/signup');
       }

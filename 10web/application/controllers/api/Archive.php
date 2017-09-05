@@ -92,7 +92,7 @@ public function addArchive() {
         else{
           $info = array(
               "Flag" => -101,
-              "Content" => urldecode("你没登陆"),
+              "Content" => urldecode("你没登录"),
               "Extra" => ""
           );
           echo urldecode(json_encode($info));
@@ -128,7 +128,7 @@ public function delArchive() {
         else{
           $info = array(
               "Flag" => -101,
-              "Content" => urldecode("你没登陆"),
+              "Content" => urldecode("你没登录"),
               "Extra" => ""
           );
           echo urldecode(json_encode($info));
