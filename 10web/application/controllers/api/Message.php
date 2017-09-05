@@ -40,7 +40,7 @@ class Message extends CI_Controller{
           $userid = $this->session->userdata['info'][0]['ID'];
         }
         else{
-          //没有登陆
+          //没有登录
           $info = $this->getInfo(-8,"you have not logged in","");
           echo urldecode(json_encode($info));
           return;
@@ -74,7 +74,7 @@ class Message extends CI_Controller{
           $userid = $this->session->userdata['info'][0]['ID'];
         }
         else{
-          //没有登陆
+          //没有登录
           $info = $this->getInfo(-8,"you have not logged in","");
           echo urldecode(json_encode($info));
           return;

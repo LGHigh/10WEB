@@ -19,7 +19,7 @@
 .am-topbar-height{
   height:51px !important;
   margin-left: 0 !important;
-  float:left;
+  float:right;
 }
 .am-topbar-white{
   background-color: #ffffff !important;
@@ -27,13 +27,11 @@
 }
 
 .am-topbar-wrapper{
-  width:1460px !important;
-  float:right;
+  width:1000px !important;
+  margin:0 auto;
   height:51px;
 }
-.am-right-wrapper{
-  width:460px;
-}
+
 .am-right-container{
   margin-left: auto;
   margin-right: auto;
@@ -169,6 +167,13 @@
 .clear{
   overflow: hidden;
 }
+
+@media screen and (max-width: 1000px) {
+  .am-topbar-wrapper{
+    width:100% !important;
+  }
+}
+
 </style>
 
 <header class="am-topbar am-topbar-fixed-top am-topbar-white">
@@ -194,30 +199,29 @@
       </li>
       </a>
       </div>
-      <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">      
+        
+      <div class="am-right-wrapper am-topbar-height">
+          <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;"> 
+          <div class="am-dropdown">
+            <li class="am-dropdown " data-am-dropdown="">
+            <span style="line-height:39px">
+            <img src="/assets/i/user-icon.jpg" class="am-user-menu">
+            </span>
+              <ul class="am-dropdown-content am-content am-user-dropdown">
+                <li><a href="">我的主页</a></li>
+                <li><a href="">我的文章</a></li>
+                <li><a href="">收藏的文章</a></li>
+                <li><a href="">喜欢的文章</a></li>
+                <li><a href="">设置</a></li>
+              </ul>
+            </li>          
+          </div>
+          </a>
+      </div>
       <div class="am-span am-span-rt">
         <img id="am-mark" src="/assets/i/unmark.png">
       </div>
-      </a>
-      </div>          
-   </div>
-   <div class="am-right-wrapper am-topbar-height">
-      <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;"> 
-      <div class="am-dropdown">
-        <li class="am-dropdown " data-am-dropdown="">
-        <span style="line-height:39px">
-        <img src="/assets/i/user-icon.jpg" class="am-user-menu">
-        </span>
-          <ul class="am-dropdown-content am-content am-user-dropdown">
-            <li><a href="">我的主页</a></li>
-            <li><a href="">我的文章</a></li>
-            <li><a href="">收藏的文章</a></li>
-            <li><a href="">喜欢的文章</a></li>
-            <li><a href="">设置</a></li>
-          </ul>
-        </li>          
-      </div>
-      </a>
+      </div>     
    </div>
  </div>
 </header>

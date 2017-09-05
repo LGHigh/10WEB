@@ -11,12 +11,13 @@
 }
 
 .am-topbar-wrapper{
-  width:1460px !important;
-  float:right;
+  width:1000px !important;
+  height:110px;
+  margin:0 auto;
 
 }
 .am-right-wrapper{
-  width:31.505%;
+  float:right;
 }
 .am-font{
   color:#ffffff !important;
@@ -44,8 +45,6 @@
   float: right;
   display: inline;
 }
-
-
 
 .dis{
   font-size: 16px;
@@ -92,7 +91,7 @@
 .am-topright:hover{
   background-color: #f8f8f8 !important;
 } 
-/*右边的用户头像和登陆注册按钮*/
+/*右边的用户头像和登录注册按钮*/
 /*重写amaze ui 样式*/
 #header-right .am-dropdown-content{
     width: 110px;
@@ -128,7 +127,7 @@
  <div class="am-header-border ">                
  </div>
  <div class="am-topbar-wrapper">
-  <div class="am-container am-topbar-height">
+  <div class="am-g am-container am-topbar-height">
     <div class="am-topbar-brand am-brand">    
         <div style="float:left;">
           <a href="/">
@@ -162,10 +161,7 @@
           </a>
         </div>
 
-      </div>          
-   </div>
-
-   <div class="am-right-wrapper am-topbar-height" id="header-right">
+         <div class="am-right-wrapper am-topbar-height" id="header-right">
       
       <?php
         if(!isset($_SESSION['info']['0'])){
@@ -182,6 +178,7 @@
         </div>
       <?php
         }else{
+
           $user = $_SESSION['info']['0'];
           $head_icon = $user['HeadIcon'];
           if(!$head_icon)
@@ -207,6 +204,10 @@
       <?php } ?>
 
    </div>
+      </div>          
+   </div>
+
+
  </div>
 </header>
 
@@ -216,7 +217,7 @@
     $.get('/index.php/api/message/GetUnreadMsgCount',function(data){
       data = JSON.parse(data);
       if(data.Flag > 0){
-        //已经登陆执行程序
+        //已经登录执行程序
         var UnreadCount = data.Content.UnreadCount;
         if(UnreadCount > 0){
           $('#unread-msg-count').text(UnreadCount);
