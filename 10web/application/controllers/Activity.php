@@ -6,11 +6,12 @@ class Activity extends CI_Controller {
       parent::__construct();
       $this->load->model('Activities_model');
       $this->load->helper('url');
+      $this->load->library('session');
     }
 
     public function index(){
       //加载所有的活动列表
-      $this->load->view('/activity/activity');
+      $this->load->view('activity/activity');
     }
 
     public function create(){

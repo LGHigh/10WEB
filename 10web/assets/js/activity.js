@@ -1,7 +1,8 @@
 new Vue({
     el:'#the_act_bodys',
     data:{
-        act:[]
+        act:[],
+        loading:'加载中...'
     },
     created:function(){
         this.fetchData();
@@ -14,8 +15,8 @@ new Vue({
             .then(function(r){
                 if(r.Flag < 0)
                     return alert(r.Content)
-                console.log(r.Content);
                 vm.act = r.Content;
+                vm.loading = "";
             });
         },
         click:function(e){
