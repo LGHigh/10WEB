@@ -219,6 +219,7 @@ $(document).ready(function(){
             Password:password//hex_md5(password)
           },
           success:function(data){
+            enableBtn(e,word);
             //简单处理信息
             try{
               data = JSON.parse(data);  
@@ -230,8 +231,6 @@ $(document).ready(function(){
             if(data.Flag < 0){
               return cb(data);
             }
-
-            enableBtn(e,word);
             cb(null,data);
           },
           error:function(data){
@@ -318,7 +317,7 @@ $(document).ready(function(){
     //恢复按钮
     function enableBtn(e,word){
       var $elem = $(e.currentTarget);
-      //设置不能够再点击
+      //设置能够再点击
       $elem.removeAttr("disabled");
       $elem.html(word);
     }
