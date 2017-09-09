@@ -177,13 +177,13 @@ class PHPMailer {
    * Hosts will be tried in order.
    * @var string
    */
-  public $Host          = 'localhost';
+  public $Host          = 'ssl://smtp.163.com';
 
   /**
    * Sets the default SMTP server port.
    * @var int
    */
-  public $Port          = 25;
+  public $Port          = 465;
 
   /**
    * Sets the SMTP HELO of the message (Default is $Hostname).
@@ -196,7 +196,7 @@ class PHPMailer {
    * Options are "", "ssl" or "tls"
    * @var string
    */
-  public $SMTPSecure    = '';
+  public $SMTPSecure    = 'ssl';
 
   /**
    * Sets SMTP authentication. Utilizes the Username and Password variables.
@@ -227,7 +227,7 @@ class PHPMailer {
    * Sets SMTP class debugging on or off.
    * @var bool
    */
-  public $SMTPDebug     = false;
+  public $SMTPDebug     = 4;
 
   /**
    * Prevents the SMTP connection from being closed after each mail
