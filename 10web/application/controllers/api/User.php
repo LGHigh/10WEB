@@ -69,7 +69,7 @@ class User extends CI_Controller {
         $info = $this->getInfo(100,"signup success","");
         $email_info =$this->config->item('email');//获取email配置信息
         //发送邮件给用户
-        if(!sendMail($account,$email_info,$this->config->item('base_url'))){
+        if(!sendMailBySendCloud($account,$email_info,$this->config->item('base_url'))){
           $info = $this->getInfo(-3,"signup fail","");
         }
 
