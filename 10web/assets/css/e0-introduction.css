@@ -38,33 +38,43 @@ html,body {
 	width: 100%
 }
 
-#menu {
-	margin: 0px auto;
-	width: 100%;
-	height: auto;
-/*	z-index: 30;
-*/	margin-top: 20px;
-	float: left;
-	list-style: none;
-	padding: 0px;
-	overflow: hidden;
+#sidebar .department {
+    width: 70%;
+    height: 50px;
+    clear: both;
+    margin: auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10px;
+    
 }
 
-#menu li {
-	line-height: 32px;
-	text-align: center;
-	width: 100%;
-	clear: left;
-	float: left;
-
+#sidebar .department img {
+    height: 30px;
+    width: 30px;
+    float: left;
+    clear: left;
+    margin-right: 20px;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-#menu li a {
-	font-family: 楷体;
-	font-size: 18px;
-	font-weight: normal;
-	display: block;
-	color: #000000;
+#sidebar .department p {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    font-size: 25px;
+    margin: 0 auto;
+}
+
+#sidebar .department.first {
+    margin-top: 30px;
+}
+
+#sidebar .department.current {
+    background-color: #dddddd;
+    border-radius: 10px;
 }
 
 /* PAGE */
@@ -110,7 +120,8 @@ html,body {
 	float: left;
 	clear: none;
 	margin-right: 30px;
-	text-align: justify;
+    text-align: justify;
+    font-size: 12px;
 }
 
 #page .list_num .last {
