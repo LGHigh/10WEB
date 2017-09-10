@@ -9,13 +9,20 @@
 <link rel="stylesheet" href="/assets/css/themes/dark/dark.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/assets/css/themes/bar/bar.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/assets/css/nivo-slider.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.nivo.slider.js"></script>
 <script type="text/javascript">
 
+jQuery.noConflict();
+
 // PAGE IS CLOSED ON START
 jQuery(document).ready(function(){
 	jQuery('#page').css({'display':'inline','overflow':'hidden','width':'20%','margin-right':'42.5%'});
+	$('#sidebar .department.unselected').bind({
+		'mouseover':function(){$(this).css({'background-color': '#dddddd','border-radius': '10px'});},
+		'mouseout':function(){$(this).css({'background':'transparent','border-radius':'0px'});}
+		})
 });
 
 // WHEN ALL ELEMENTS ARE LOADED
@@ -49,10 +56,10 @@ jQuery(window).load(function() {
 				<li><a href="#">移动开发部</a></li>
 				<li><a href="#">网站运维部</a></li>
 			</ul> -->
-			<div class="department first current"><img src="/assets/i/hafu_anti_logo_black.png" alt="亿灵" /><p>关于亿灵</p></div>
-			<div class="department"><img src="/assets/i/electric_car.png" alt="智能" /><p>智能设计部</p></div>
-			<div class="department"><img src="/assets/i/phone.png" alt="移动" /><p>移动开发部</p></div>
-			<div class="department"><img src="/assets/i/pc.png" alt="网站" /><p>网站运维部</p></div>
+			<div class="department first selected"><img src="/assets/i/hafu_anti_logo_black.png" alt="亿灵" /><p>关于亿灵</p></div>
+			<div class="department unselected"><img src="/assets/i/electric_car.png" alt="智能" /><p>智能设计部</p></div>
+			<div class="department unselected"><img src="/assets/i/phone.png" alt="移动" /><p>移动开发部</p></div>
+			<div class="department unselected"><img src="/assets/i/pc.png" alt="网站" /><p>网站运维部</p></div>
 	</div>
 	<div id="page">
 		<div id="wrapper">
