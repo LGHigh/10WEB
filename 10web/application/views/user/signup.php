@@ -275,9 +275,11 @@ $(document).ready(function(){
         success:function(data){
           //简单处理信息
           try{
+            console.log(data);
             data = JSON.parse(data);  
           }catch(e){
             login_waring(waring_word[SERVER_ERROR]);
+            console.log(e);
             return;
           }
           //返回错误
@@ -291,7 +293,8 @@ $(document).ready(function(){
         error:function(data){
           cb(data);
           enableBtn(e,word);
-          login_waring(waring_word[SERVER_ERROR])
+          login_waring(waring_word[SERVER_ERROR]);
+          console.log(data);
         }
       });
     } 
