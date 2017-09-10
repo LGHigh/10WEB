@@ -9,22 +9,33 @@
 <link rel="stylesheet" href="/assets/css/themes/dark/dark.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/assets/css/themes/bar/bar.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/assets/css/nivo-slider.css" type="text/css" media="screen" />
-<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.nivo.slider.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-  setTimeout(function(){
-  	$("#sidebar").animate({'margin-left':'5%'},"slow");
-  }, 1000);
+
+// PAGE IS CLOSED ON START
+jQuery(document).ready(function(){
+	jQuery('#page').css({'display':'inline','overflow':'hidden','width':'20%','margin-right':'42.5%'});
 });
-var jquery1 = $.noConflict();
-jquery1(window).load(function() {
-        jquery1('#slider').nivoSlider();
+
+// WHEN ALL ELEMENTS ARE LOADED
+jQuery(window).load(function() {
+	jQuery('#hp_preloader').delay(800).animate({'opacity':'0'},1400,function(){
+		// HOMEPAGE NIVO SLIDER STARTS
+		jQuery('#slider').nivoSlider();
+		
+		// REMOVE LOADING
+		jQuery(this).remove();
+
+		// PAGE OPENING ANIMATION
+		jQuery('#sidebar').delay(800).animate({'margin-left':'5%'},2100);
+		jQuery('#page').delay(800).animate({'margin-right':'5%','width':'65%'},2100);
+	});
 });
 </script>
 </head>
 <body>
+	<div id="hp_preloader"></div>
 	<div id="sidebar">
 			<div id="logo">
 				<a href="test.html">
