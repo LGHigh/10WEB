@@ -72,8 +72,8 @@ html,body {
     margin-top: 30px;
 }
 
-#sidebar .department.current {
-    background-color: #dddddd;
+#sidebar .department.selected {
+    background-color: #eeeeee;
     border-radius: 10px;
 }
 
