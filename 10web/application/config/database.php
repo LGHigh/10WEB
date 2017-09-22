@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '123.206.94.77',
+	'hostname' => 'eling.net.cn',
 	'port' => '6700',
 	'username' => 'root',
 	'password' => 'password',

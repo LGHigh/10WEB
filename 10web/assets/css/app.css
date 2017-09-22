@@ -291,3 +291,23 @@ body{min-width: 1000px;}
 	text-align: center;
 	background: #333333;
 }
+
+#am-imglist{
+	height:390px;
+	margin: 0;	
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: -1;
+		background-color: #AAAAAA;
+		overflow: hidden;
+	}
+	
+	#am-imglist li{
+	float: left;
+	display:inline;
+	height: 100%;
+	width: 100%;
+}

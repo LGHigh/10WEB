@@ -22,17 +22,21 @@
         <p class="am-text-footer">—今日语录—</p>
       </div>
       <!-- 两个指向按钮 -->
+      <!-- 两个指向按钮 -->
       <div class="director">
-        <a class="am-icon-chevron-circle-right am-icon-lg" id="next" href="#"></a>
-        <a class="am-icon-chevron-circle-left am-icon-lg" id="prev" href="#"></a>
-      </div>
-
+      <a class="am-icon-chevron-circle-right am-icon-lg" id="next" href="#"></a>
+      <a class="am-icon-chevron-circle-left am-icon-lg" id="prev" href="#"></a>
     </div>
 
-    <ul id="am-imglist">
-      <li><img src="/assets/i/banner.png" class="am-banner"></li>
-    </ul>
   </div>
+
+  <ul id="am-imglist">
+      <li><img src=#></li>
+      <li><img src="/assets/i/banner.png" class="am-banner"></li>
+      <li><img src="/assets/i/banner2.png" class="am-banner"></li>
+      <li><img src="/assets/i/banner3.png" class="am-banner"></li>
+  </ul>
+</div>
 </div>
 
 <!-- 四个导航模块 -->
@@ -207,6 +211,37 @@
 
     <% } %>
   `;
+
+      //banner滚动
+  var banner_po=0;
+  var banner_len=$("#am-imglist li").length-1;
+  $(function(){
+      $("#next").click(function nexp(){
+      if(banner_po==banner_len){
+        banner_po=0;
+    }
+      banner_po++;
+      $("#am-imglist li").eq(banner_po).fadeIn(600).siblings().hide();
+    });
+    $("#prev").click(function prep(){
+      if(banner_po==1){
+        banner_po=banner_len+1;
+      }
+      banner_po--;
+      $("#am-imglist li").eq(banner_po).fadeIn(600).siblings().hide();
+    });
+ });
+  //banner自动滚动
+function changeBannerp(){
+  if(banner_po==banner_len){
+  banner_po=0;
+  }
+  banner_po++;
+  $("#am-imglist li").eq(banner_po).fadeIn(600).siblings().hide();
+};
+window.setTimeout("changeBannerp()",0);
+window.setInterval("changeBannerp()",5000);
+    
 </script>
 
 <?php  

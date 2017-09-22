@@ -75,7 +75,7 @@ class Sign_model extends CI_Model{
 		$this->db->insert('e0_user',$data);
 	}
 	/**
-	*	检查文档：登陆时查找数据库中是否有该账号和密码，以及检查该账号是否可用
+	*	检查文档：登录时查找数据库中是否有该账号和密码，以及检查该账号是否可用
 	*	Permission: 0->未激活，1->激活， 2->账号被封，	３->管理员
 	*	@param account varchar(40)
 	*	@param password varchar(20)

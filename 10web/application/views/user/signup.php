@@ -4,10 +4,10 @@
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
-    <meta name="keywords" content="南开亿灵－登陆">
+    <meta name="keywords" content="南开亿灵－登录">
     <meta name="viewport"
         content="width=device-width, initial-scale=1">
-  <title>南开亿灵－登陆</title>
+  <title>南开亿灵－登录</title>
   <link rel="stylesheet" type="text/css" href="/assets/css/amazeui.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
@@ -26,7 +26,7 @@
             <ul class="am-tabs-nav am-cf">
                 <li class="am-active to_login">
                   <a href="[data-tab-panel-0]">
-                  <span>登陆</span>
+                  <span>登录</span>
                   </a>
                 </li>
                 <li class=" to_sign ">
@@ -37,7 +37,7 @@
             </ul>
             <div class="am-tabs-bd">
                 
-                <!--登陆输入框组-->
+                <!--登录输入框组-->
                 <div data-tab-panel-0 class="am-tab-panel am-active">
                   
                   <div class="login-input-box">
@@ -56,14 +56,14 @@
 
                   <div class="check-btn">
                     <button id="login-btn">
-                      登陆
+                      登录
                     </button>
                   </div>
 
                   <div class="login-info">
                     <a href="#" title="忘记密码?">忘记密码？</a>
                   </div>
-                  <!--登陆输入框结束-->
+                  <!--登录输入框结束-->
 
                 </div>
             
@@ -94,7 +94,7 @@
                   </div>
 
                   <div class="signup-info">
-                    已有账号？<a href="#" id="click2login">点我登陆</a>
+                    已有账号？<a href="#" id="click2login">点我登录</a>
                   </div>
                   <!--注册输入框结束-->
 
@@ -102,7 +102,7 @@
 
             </div>
         </div>
-        <!--登陆注册的警告信息-->
+        <!--登录注册的警告信息-->
         <div class="login-waring">
         </div>
     </div>
@@ -118,18 +118,18 @@
   <script type="text/javascript">
 
 $(document).ready(function(){
-    //切换注册和登陆的监听
+    //切换注册和登录的监听
     $to_login = $(".to_login a"); 
     $to_sign = $(".to_sign a");
 
-    //监听登陆注册的点击按钮
+    //监听登录注册的点击按钮
     $login_btn = $("#login-btn");
     $sign_btn = $("#sign-btn");
 
-    //登陆警告
+    //登录警告
     $login_waring = $(".login-waring");
 
-    //登陆的用户名和密码
+    //登录的用户名和密码
     $login_username = $("#login-username");
     $login_password = $("#login-password");
     //注册的用户名和密码
@@ -151,15 +151,15 @@ $(document).ready(function(){
     waring_word[TOO_LONG_ERROR] = "字符串太长了";
     waring_word[SERVER_ERROR] = "服务器发生错误，请刷新重试，或者联系管理员";
 
-    //登陆监听开始
+    //登录监听开始
     $login_btn.click(function(e){
       login_fn(e,function(err,data){
         if(err){
           login_waring("错误代码:" + err.Flag  + "错误信息" + err.Content);
           return ;
         }else{
-          login_waring("登陆成功，正在跳转");
-          //登陆成功跳转
+          login_waring("登录成功，正在跳转");
+          //登录成功跳转
           setTimeout(function(){
             window.location.href = "/index.php";
           },1000);
@@ -190,7 +190,7 @@ $(document).ready(function(){
         }
     });
 
-    //----------------------------------------->登陆用函数
+    //----------------------------------------->登录用函数
     var login_fn = function(e,cb){
         //检查输入框的字符串
         var username = $login_username.val().trim();
@@ -207,7 +207,7 @@ $(document).ready(function(){
           return ; 
         }
 
-        //加载登陆动画
+        //加载登录动画
         var word = disableBtn(e).trim();
 
         //发送ajax请求
@@ -219,6 +219,7 @@ $(document).ready(function(){
             Password:password//hex_md5(password)
           },
           success:function(data){
+            enableBtn(e,word);
             //简单处理信息
             try{
               data = JSON.parse(data);  
@@ -230,8 +231,6 @@ $(document).ready(function(){
             if(data.Flag < 0){
               return cb(data);
             }
-
-            enableBtn(e,word);
             cb(null,data);
           },
           error:function(data){
@@ -276,9 +275,11 @@ $(document).ready(function(){
         success:function(data){
           //简单处理信息
           try{
+            console.log(data);
             data = JSON.parse(data);  
           }catch(e){
             login_waring(waring_word[SERVER_ERROR]);
+            console.log(e);
             return;
           }
           //返回错误
@@ -292,7 +293,8 @@ $(document).ready(function(){
         error:function(data){
           cb(data);
           enableBtn(e,word);
-          login_waring(waring_word[SERVER_ERROR])
+          login_waring(waring_word[SERVER_ERROR]);
+          console.log(data);
         }
       });
     } 
@@ -304,7 +306,7 @@ $(document).ready(function(){
 
 
     var loading = '<i class="am-icon-spinner am-icon-pulse"></i>';
-    //加载登陆动画
+    //加载登录动画
     function disableBtn(e){
       var $elem = $(e.currentTarget);
       var word = $elem.text();
@@ -318,7 +320,7 @@ $(document).ready(function(){
     //恢复按钮
     function enableBtn(e,word){
       var $elem = $(e.currentTarget);
-      //设置不能够再点击
+      //设置能够再点击
       $elem.removeAttr("disabled");
       $elem.html(word);
     }

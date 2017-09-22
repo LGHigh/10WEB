@@ -71,7 +71,7 @@ class Activity extends CI_Controller {
         );
 
         $data = array_merge($i->post(NULL,true), $other);
-        $this->Activities_model->add($data);
+        $this->Activities_model->create($data);
         $this->_echo(100,$data);
       }catch(Error $error){
         $this->_error($error);
@@ -86,8 +86,18 @@ class Activity extends CI_Controller {
     }
 
     public function edit(){
-
+      
     }
+
+    // 删除活动的方法
+    public function delete($id = null){
+      if($id == null)
+        $this->_error('id不能为空');
+      
+      $d = $this->Activities_model->delete($id);
+      $this->_echo(100,$d);
+    }
+
 
     //--------私有函数
     private function _echo($state , $data){

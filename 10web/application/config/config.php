@@ -511,4 +511,4 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['email'] = array('email_host' => 'smtp.163.com','email_username' => 'nkuhjp@163.com','email_password' => 'hjp19970215');
+$config['email'] = array('email_host' => 'smtp.163.com','email_username' => 'elingweb@163.com','email_password' => 'elingweb2017');

@@ -69,7 +69,7 @@ class User extends CI_Controller {
         $info = $this->getInfo(100,"signup success","");
         $email_info =$this->config->item('email');//获取email配置信息
         //发送邮件给用户
-        if(!sendMail($account,$email_info,$this->config->item('base_url'))){
+        if(!sendMailBySendCloud($account,$email_info,$this->config->item('base_url'))){
           $info = $this->getInfo(-3,"signup fail","");
         }
 
@@ -92,7 +92,7 @@ class User extends CI_Controller {
       if($state === 1){
           $info = $this->getInfo(-4,"account has not been activated","");
       }
-      //已经激活，可以登陆
+      //已经激活，可以登录
       else if($state === 2){
          $userinfomation = $this->sign_model->GetUserInfo($account);
          //$this->session->set_userdata($userinfomation);

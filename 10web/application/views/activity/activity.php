@@ -27,9 +27,14 @@
   
   <!-- 活动body模块样式-->
   <div class="the_act_bodys" id="the_act_bodys">
+      <div>
+        {{
+          loading
+        }}
+      </div>  
       <div class="the_act_body" id="the_act_body">
         <template v-for="a in act">
-          <div class="activitybody" :id="a.ID" :data-redirect="a.RedirectUrl" v-on:click="click" >
+          <div class="activitybody" :id="a.ID" :data-redirect="a.RedirectUrl||''" v-on:click="click" >
             <div class="act_user" id="act_photo_and_name">
               <div class="act_user" id="act_user_photo">
                 <img src="/assets/i/act_img/activity_touicang_logo.fw.png">
